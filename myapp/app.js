@@ -10,7 +10,7 @@ var admin = require('./routes/admin');
 
 var app = express();
 
-var session = require('experss-session');
+var session = require('express-session');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
