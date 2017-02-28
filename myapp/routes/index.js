@@ -8,31 +8,20 @@ router.get('/login', function(req, res, next) {
 
 router.post('/login', function(req,res,next){
   var username = req.body.username;
-
+  var password = req.body.password;
   username = username.trim();
 
-  if(username.length ==0){
+  if(username.length ==0 || password.length == 0 || password != 'knock'){
     res.redirect('login');
   }
   else{
     req.session.username = username;
     res.render('log',{name:username, pass:password});
   }
-
-  var password = req.body.password;
-  
-  if(password == knockknock){
-    res.render('log',{name:username, pass:password});
-    console.log("welcome" + username + "your pass" + password);
-  }
-  else{
-     res.redirect('/login')
-  }
 });
 
 router.get('/log',function(req,res,next){
   res.render('log',{name:username, pass:password});
-   console.log("welcome" + username + "your pass" + password)
 });
 
 module.exports = router;
