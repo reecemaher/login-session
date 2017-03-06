@@ -12,16 +12,21 @@ router.post('/login', function(req,res,next){
   username = username.trim();
 
   if(username.length ==0 || password.length == 0 || password != 'knock'){
-    res.redirect('login');
+    res.redirect('/login');
   }
   else{
     req.session.username = username;
-    res.render('log',{name:username, pass:password});
+    res.redirect('/')
   }
 });
 
-router.get('/log',function(req,res,next){
+/*
+router.get('/',function(req,res,next){
   res.render('log',{name:username, pass:password});
+});*/
+
+router.get('/', function(req,res,next){
+  res.render('jokesLists', {jokes: req.session.allJokes});
 });
 
 module.exports = router;

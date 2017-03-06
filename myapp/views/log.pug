@@ -2,4 +2,18 @@ extends layout
 
 block content
 
- welcome Hello #{name} Welcome to your page, passowrd is #{pass}
+    - var formMethod = '/admin/newJoke'
+    - var jokeText = ''
+
+    if joke 
+     - formMethod = '/admin/editJoke'
+     - jokeText = joke.joke
+
+    form(method='POST', action='#{formMethod}')
+        label(for='theJoke') Enter your joke
+            textarea#theJoke.form-control(name='theJoke') #{jokeText}
+            if joke
+                input(type='hidden', name='id', value='#{joke.id}')
+            br    
+            input(type='submit', name='Add')    
+
