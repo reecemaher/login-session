@@ -2,12 +2,13 @@ extends layout
 
 block content
 
+    
+
     a(href='/admin/createJoke') Create a new joke
-        for joke, i in jokes
-            p
-                small #{new Date(joke.date).toLocaleDateString()}
-            p #{joke.joke}
-
-            a(href='/admin/delete/#{joke.id}') delete
-
-            a(href='/admin/edit?id=#{joke.id}') Edit   
+    for joke, i in jokes
+      p
+        small #{new Date(joke.date).toLocaleDateString()}
+      p #{joke.joke}
+      a(href='/admin/delete/ + joke.id') delete
+      div
+      a(href='/admin/edit?id= +joke.id') Edit   

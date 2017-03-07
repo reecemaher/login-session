@@ -41,6 +41,8 @@ router.get('/delete/:id', function(req,res,next){
 });
 
 router.get('/edit', function(req,res,next){
+
+    console.log("Editing joke " + req.query.id);
     if(req.query.id){
         var jokeIndex = getJokeIndex(req.session.allJokes, req.query.id);
 
@@ -54,7 +56,6 @@ router.get('/edit', function(req,res,next){
 });
 
 router.post('/editJoke', function(req,res,next){
-    console.log("Editing joke " + req.query.id);
     var jokeID = req.body.id;
 
     var jokeIndex = getJokeIndex(req.session.allJokes, req.body.id);
